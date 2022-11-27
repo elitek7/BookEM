@@ -9,7 +9,6 @@
         android:id="@+id/resourcePlaceholder"
         android:layout_width="180dp"
         android:layout_height="247dp"
-        android:contentDescription="@string/content"
         app:srcCompat="@drawable/resource_placeholder"
         tools:layout_editor_absoluteX="75dp"
         tools:layout_editor_absoluteY="16dp" />

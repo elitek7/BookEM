@@ -30,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
         String username_input = username.getText().toString();
-        String email_input = username.getText().toString();
+        String email_input = email.getText().toString();
         String password_input = password.getText().toString();
         String confirm_password_input = confirm_password.getText().toString();
 
