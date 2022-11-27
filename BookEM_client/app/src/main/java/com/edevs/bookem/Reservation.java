@@ -1,5 +1,7 @@
 package com.edevs.bookem;
 
+import androidx.annotation.NonNull;
+
 public abstract class Reservation {
     protected int reservation_id;
     protected String start_date;
@@ -26,4 +28,7 @@ public abstract class Reservation {
     public String getEndDate() {return end_date; }
 
     public void setEndDate(String end_date) {this.end_date = end_date;}
+
+    @NonNull
+    public abstract String toString();
 }
