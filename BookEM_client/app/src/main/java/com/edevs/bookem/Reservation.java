@@ -2,12 +2,14 @@ package com.edevs.bookem;
 
 import androidx.annotation.NonNull;
 
-public abstract class Reservation {
-    protected int reservation_id;
-    protected String start_date;
-    protected String end_date;
+import java.time.LocalDateTime;
 
-    public Reservation(int reservation_id, String start_date, String end_date){
+public class Reservation {
+    protected int reservation_id;
+    protected LocalDateTime start_date;
+    protected LocalDateTime end_date;
+
+    public Reservation(int reservation_id, LocalDateTime start_date, LocalDateTime end_date){
         this.reservation_id = reservation_id;
         this.start_date = start_date;
         this.end_date = end_date;
@@ -19,16 +21,18 @@ public abstract class Reservation {
         this.reservation_id = reservation_id;
     }
 
-    public String getStartDate() {
+    public LocalDateTime getStartDate() {
         return start_date;
     }
 
-    public void setStartDate(String start_date) {this.start_date = start_date;}
+    public void setStartDate(LocalDateTime start_date) {this.start_date = start_date;}
 
-    public String getEndDate() {return end_date; }
+    public LocalDateTime getEndDate() {return end_date; }
 
-    public void setEndDate(String end_date) {this.end_date = end_date;}
+    public void setEndDate(LocalDateTime end_date) {this.end_date = end_date;}
 
     @NonNull
-    public abstract String toString();
+    public String toString(){
+        return ("Start Date: " + start_date + " End Date: " + end_date );
+    }
 }

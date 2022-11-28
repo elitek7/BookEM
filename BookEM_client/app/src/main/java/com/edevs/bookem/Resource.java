@@ -2,7 +2,7 @@ package com.edevs.bookem;
 
 import androidx.annotation.NonNull;
 
-public abstract class Resource {
+public class Resource {
 
     protected int resource_id;
 
@@ -17,5 +17,7 @@ public abstract class Resource {
         this.resource_id = resource_id;
     }
     @NonNull
-    public abstract String toString();
+    public String toString(){
+            return null;
+    }
 }
