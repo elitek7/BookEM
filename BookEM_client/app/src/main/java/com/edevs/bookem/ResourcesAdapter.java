@@ -65,14 +65,19 @@ public class ResourcesAdapter extends ArrayAdapter<Resource>{
             // Inflates the layout
             listItem = LayoutInflater.from(context).inflate(R.layout.resource_item, parent, false);
 
-            currentResource = currentResource;
 
             // Initializes the elements
-            TextView content = listItem.findViewById(R.id.resourceContent);
+            TextView name = listItem.findViewById(R.id.resourceName);
+            TextView content = listItem.findViewById(R.id.resourceDescription);
 
             // Populates the Text
-            content.setText(currentResource.getContent());
+            name.setText(currentResource.getName());
+            content.setText(currentResource.getDescription());
 
-        }
+        }else {
+            throw new UnsupportedOperationException("Unknown Resource");
+            
+        }return listItem;
+
     }
 }
