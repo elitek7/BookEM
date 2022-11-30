@@ -3,28 +3,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:backgroundTint="#FFFFFF">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/resourcesTitleView"
         android:layout_width="252dp"
         android:layout_height="43dp"
         app:srcCompat="@drawable/resources_title"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="38dp" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="96dp"
-        android:layout_height="55dp"
-        app:srcCompat="@drawable/small_rectangle"
-        tools:layout_editor_absoluteX="313dp"
-        tools:layout_editor_absoluteY="38dp" />
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="48dp" />
 
     <Button
         android:id="@+id/myBookings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="211dp"
-        tools:layout_editor_absoluteY="170dp" />
+        android:layout_width="43dp"
+        android:layout_height="42dp"
+        android:background="@drawable/my_bookings"
+        android:backgroundTint="#FFFFFF"
+        tools:layout_editor_absoluteX="337dp"
+        tools:layout_editor_absoluteY="49dp" />
+
+    <ImageView
+        android:id="@+id/smallRectangle"
+        android:layout_width="128dp"
+        android:layout_height="61dp"
+        app:srcCompat="@drawable/small_rectangle"
+        tools:layout_editor_absoluteX="322dp"
+        tools:layout_editor_absoluteY="38dp" />
+
+    <EditText
+        android:id="@+id/searchBar"
+        android:layout_width="330dp"
+        android:layout_height="51dp"
+        android:background="@drawable/search_bar_bg"
+        android:ems="10"
+        android:hint="Search"
+        android:inputType="textPersonName"
+        android:paddingStart="16dp"
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="115dp" />
+
+    <ImageView
+        android:id="@+id/searchIcon"
+        android:layout_width="41dp"
+        android:layout_height="36dp"
+        app:srcCompat="@drawable/search_icon"
+        tools:layout_editor_absoluteX="312dp"
+        tools:layout_editor_absoluteY="123dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
