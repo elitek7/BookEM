@@ -71,7 +71,7 @@ public class ResourcesAdapter extends ArrayAdapter<Resource>{
             TextView content = listItem.findViewById(R.id.resourceContent);
 
             // Populates the Text
-            content.setText(currentTextGem.getContent());
+            content.setText(currentResource.getContent());
 
         }
     }
