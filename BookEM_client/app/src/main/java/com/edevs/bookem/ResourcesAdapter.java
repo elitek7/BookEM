@@ -76,7 +76,7 @@ public class ResourcesAdapter extends ArrayAdapter<Resource>{
 
         }else {
             throw new UnsupportedOperationException("Unknown Resource");
-            
+
         }return listItem;
 
     }
