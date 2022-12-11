@@ -25,4 +25,18 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Objects;
 public class Link {
+    // Middle ground between client and server
+
+    public static void checkAvailability(Context context, User user, TextView error_box) {
+
+        Relay relay = new Relay(Constants.APIs.IS_USERNAME_EMAIL_AVAILABLE, response -> checkAvailabilityRESPONSE(context, response, user, error_box), (api, e) -> error(api, context, e, "Error Connecting to Server"));
+
+        relay.setConnectionMode(Relay.MODE.POST);
+
+        relay.addParam(Constants.Users.USERNAME, user.getUsername());
+        relay.addParam(Constants.Users.EMAIL, user.getEmail());
+
+        relay.sendRequest();
+
+    }
 }
