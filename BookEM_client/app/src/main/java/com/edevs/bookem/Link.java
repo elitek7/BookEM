@@ -59,4 +59,18 @@ public class Link {
         }
 
     }
+
+    public static void addUserToDatabase(Context context, User user) {
+
+        Relay relay = new Relay(Constants.APIs.ADD_USER, response -> addUserToDatabaseRESPONSE(context, response, user), (api, e) -> error(api, context, e, "Error Connecting to Server"));
+
+        relay.setConnectionMode(Relay.MODE.POST);
+
+        relay.addParam(Constants.Users.USERNAME, user.getUsername());
+        relay.addParam(Constants.Users.PASSWORD, user.getPassword());
+        relay.addParam(Constants.Users.EMAIL, user.getEmail());
+
+        relay.sendRequest();
+
+    }
 }
