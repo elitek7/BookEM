@@ -23,5 +23,26 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Relay {
+public class Relay extends AsyncTask<String, Void, String> {
+
+    // The direct Link between the APIs and the Frontend
+
+    private final Map<String, Object> parameters; // The parameters to be sent
+    private final String url; // The url to be sent
+    private final PROCESS executor; // The post executor
+    private final ERROR error; // The error handler
+    private final String api; // The API name
+    private String mode = "GET"; // The connection mode
+
+    public Relay(@NonNull String api, @NonNull PROCESS content, @NonNull ERROR error) {
+
+        // Constructor
+        super();
+        this.api = api;
+        this.url = Constants.URL.buildUrl(api);
+        this.executor = content;
+        this.error = error;
+        this.parameters = new HashMap<>();
+
+    }
 }
