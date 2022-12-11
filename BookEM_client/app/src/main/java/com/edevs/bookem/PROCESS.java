@@ -5,7 +5,7 @@ public interface PROCESS {
 
     // An interface to conduit processes through the Linking
 
-    void ACCESS(Constants.Response response);
+    void ACCESS(Response response);
 
 }
 
