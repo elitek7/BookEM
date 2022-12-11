@@ -39,4 +39,24 @@ public class Link {
         relay.sendRequest();
 
     }
+
+    private static void checkAvailabilityRESPONSE(Context context, Response response, User user, TextView error_box) {
+
+        int availability = response.isAvailable();
+
+        if (availability == Constants.Response.Availability.NONE_AVAILABLE || availability == Constants.Response.Availability.EMAIL_AVAILABLE) {
+
+            error_box.setText(R.string.username_taken);
+
+        } else if (availability == Constants.Response.Availability.USERNAME_AVAILABLE) {
+
+            error_box.setText(R.string.email_taken);
+
+        } else {
+
+            addUserToDatabase(context, user);
+
+        }
+
+    }
 }
