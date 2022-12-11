@@ -95,4 +95,27 @@ public abstract class Helper {
             return null;
         }
     }
+
+    public static User rebaseUserFromJSON(JSONObject json) {
+
+        // Converts a JSON Object to a User object
+        try {
+
+            int user_id = json.getInt(Constants.Users.USER_ID);
+            String password = json.getString(Constants.Users.PASSWORD);
+            String username = json.getString(Constants.Users.USERNAME);
+            String email = json.getString(Constants.Users.EMAIL);
+
+
+            User result = new User(user_id, username, password, email);
+
+            Log.i("User", result.toString());
+            return result;
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
