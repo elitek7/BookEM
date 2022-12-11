@@ -52,4 +52,28 @@ public class Relay extends AsyncTask<String, Void, String> {
         parameters.put(key, value);
 
     }
+
+    public void setConnectionMode(MODE mode1) {
+
+        // Sets the connection mode
+        switch (mode1) {
+
+            case GET:
+
+                this.mode = "GET";
+                break;
+
+            case POST:
+
+                this.mode = "POST";
+                break;
+        }
+
+    }
+
+    // Connection modes
+    enum MODE {
+
+        GET, POST
+    }
 }
