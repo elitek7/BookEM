@@ -73,4 +73,13 @@ public class Link {
         relay.sendRequest();
 
     }
+
+    private static void addUserToDatabaseRESPONSE(Context context, Response response, User user) {
+
+        Intent intent = new Intent(context, FeedActivity.class);
+        user.setUserId(response.getLastId());
+        Helper.storeUser(context, user);
+        context.startActivity(intent);
+
+    }
 }
