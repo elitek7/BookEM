@@ -45,4 +45,11 @@ public class Relay extends AsyncTask<String, Void, String> {
         this.parameters = new HashMap<>();
 
     }
+
+    public <T> void addParam(String key, T value) {
+
+        // Adds a parameter
+        parameters.put(key, value);
+
+    }
 }
