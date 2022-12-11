@@ -1,9 +1,11 @@
 package com.edevs.bookem;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -81,6 +83,89 @@ public class Relay extends AsyncTask<String, Void, String> {
 
         // Sends the request
         this.execute();
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    @Override
+    protected String doInBackground(String... strings) {
+
+        try {
+
+            // Builds the URL
+            StringBuilder url_string = new StringBuilder(this.url);
+
+            // Adds URL parameters
+            if (mode.equals("GET")) {
+
+                if (!parameters.isEmpty()) {
+
+                    url_string.append("?");
+
+                    parameters.forEach((s, o) -> {
+
+                        url_string.append(s);
+                        url_string.append("=");
+                        url_string.append(o);
+                        url_string.append("&");
+
+                    });
+                    url_string.deleteCharAt(url_string.length() - 1);
+                }
+
+            }
+
+            // Initializes the actual URL
+            URL current_url = new URL(url_string.toString());
+
+            // Opens the connection
+            HttpURLConnection connection = (HttpURLConnection) current_url.openConnection();
+
+            // Sets the connection settings
+            connection.setRequestMethod(mode);
+            connection.setConnectTimeout(10000);
+            connection.setReadTimeout(20000);
+            connection.setDoOutput(true);
+
+            // Handles the body parameters
+            if (mode.equals("POST")) {
+
+                Uri.Builder builder = new Uri.Builder();
+                parameters.forEach((s, o) -> builder.appendQueryParameter(s, String.valueOf(o)));
+
+                String query = builder.build().getEncodedQuery();
+
+                OutputStream os = connection.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(
+                        new OutputStreamWriter(os, StandardCharsets.UTF_8));
+                writer.write(query);
+                writer.flush();
+                writer.close();
+                os.close();
+            }
+
+            // Sends the connection
+            connection.connect();
+
+            // Retrieves the response
+            InputStream inputStream = connection.getInputStream();
+            StringBuilder chain = new StringBuilder();
+            BufferedReader rd = new BufferedReader(new InputStreamReader(inputStream));
+            for (String line = rd.readLine(); line != null; line = rd.readLine()) {
+
+                chain.append(line);
+
+            }
+
+            return chain.toString();
+
+        } catch (IOException e) {
+
+            // Handles errors
+            error.DEBUG(api, e);
+            return null;
+
+        }
 
     }
 }
