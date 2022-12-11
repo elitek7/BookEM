@@ -71,4 +71,28 @@ public abstract class Helper {
         return result;
 
     }
+
+    public static ArrayList<User> rebaseUsersFromJSON(JSONArray json) {
+
+        // Converts a JSON array to a User array
+
+        ArrayList<User> result = new ArrayList<>();
+        try {
+
+            for (int i = 0; i < json.length(); i++) {
+
+                JSONObject current = json.getJSONObject(i);
+
+                User user = rebaseUserFromJSON(current);
+
+                result.add(user);
+
+            }
+            return result;
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
