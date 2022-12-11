@@ -94,4 +94,13 @@ public class Link {
         relay.sendRequest();
 
     }
+
+    private static void getAndStoreUserRESPONSE(Context context, Response response) {
+
+        User result = (User) Objects.requireNonNull(response.getQueryResult().get(Constants.Response.Classes.USER)).get(0);
+        assert result != null;
+        Helper.storeUser(context, result);
+        Temp.TEMP_USERS.put(result.getUserId(), result);
+
+    }
 }
