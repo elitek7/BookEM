@@ -82,4 +82,16 @@ public class Link {
         context.startActivity(intent);
 
     }
+
+    public static void getAndStoreUser(Context context, int user_id) {
+
+        Relay relay = new Relay(Constants.APIs.GET_USER, response -> getAndStoreUserRESPONSE(context, response), (api, e) -> error(api, context, e, "Error Fetching User from Server"));
+
+        relay.setConnectionMode(Relay.MODE.GET);
+
+        relay.addParam(Constants.Users.USER_ID, user_id);
+
+        relay.sendRequest();
+
+    }
 }
