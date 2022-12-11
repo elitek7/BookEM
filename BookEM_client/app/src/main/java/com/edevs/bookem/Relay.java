@@ -201,12 +201,10 @@ public class Relay extends AsyncTask<String, Void, String> {
                                             results.put(t, Helper.rebaseUsersFromJSON(current));
                                             break;
 
-                                        case (Constants.Response.Classes.GEM):
+                                        case (Constants.Response.Classes.RESOURCE):
 
                                             results.put(t, Helper.rebaseResourcesFromJSON(current));
                                             break;
-
-
                                     }
 
 
@@ -249,19 +247,13 @@ public class Relay extends AsyncTask<String, Void, String> {
                         json.optBoolean(Constants.Response.IS_AUTHENTICATED),
                         results,
                         availability
-
                 );
-
                 // Executes
                 executor.ACCESS(response);
             }
-
-
         } catch (Exception e) {
-
             // Handles errors
             error.DEBUG(api, e);
-
         }
 
     }

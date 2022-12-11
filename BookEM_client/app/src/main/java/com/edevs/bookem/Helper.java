@@ -52,22 +52,21 @@ public abstract class Helper {
                 JSONObject content = new JSONObject(current.getString(Constants.Resources.DESCRIPTION));
                 Resource current_resource = null;
 
-                        String text = content.getString(Constants.Resources.Content.TEXT);
-                        current_resource = new TextResource(resource_id, mine_date, edit_date, owner_id, text, diamonds, remines, comments, root, is_liked, is_voted);
+                        String text = content.getString(Constants.Resources.DESCRIPTION);
+                        current_resource = new Resource(resource_id, user_id, text);
 
 
                         String img_src = content.getString(Constants.Resources.Content.IMG_SRC);
-                        current_resource = new ImageResource(resource_id, mine_date, edit_date, owner_id, img_src, diamonds, remines, comments, root, is_liked, is_voted);
+                        current_resource = new Resource(resource_id, owner_id, img_src);
                 }
 
 
                 Log.i("RESOURCES", String.valueOf(current_resource));
                 result.add(current_resource);
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
+            } catch (JSONException jsonException) {
+            jsonException.printStackTrace();
         }
+
         return result;
 
     }
