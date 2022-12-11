@@ -37,4 +37,38 @@ public abstract class Helper {
         String email = sp.getString(Constants.Users.EMAIL, "lorem_ipsum@co.com");
         return new User(user_id, username, password, email);
     }
+
+    public static ArrayList<Resource> rebaseResourcesFromJSON(JSONArray json) {
+
+        // Converts a JSON array to a Resource array
+        ArrayList<Resource> result = new ArrayList<>();
+        try {
+            for (int i = 0; i < json.length(); i++) {
+
+                JSONObject current = json.getJSONObject(i);
+
+                int resource_id = current.getInt(Constants.Resources.RESOURCE_ID);
+                int owner_id = current.getInt(Constants.Resources.OWNER_ID);
+                JSONObject content = new JSONObject(current.getString(Constants.Resources.DESCRIPTION));
+                Resource current_resource = null;
+
+                        String text = content.getString(Constants.Resources.Content.TEXT);
+                        current_resource = new TextResource(resource_id, mine_date, edit_date, owner_id, text, diamonds, remines, comments, root, is_liked, is_voted);
+
+
+                        String img_src = content.getString(Constants.Resources.Content.IMG_SRC);
+                        current_resource = new ImageResource(resource_id, mine_date, edit_date, owner_id, img_src, diamonds, remines, comments, root, is_liked, is_voted);
+                }
+
+
+                Log.i("RESOURCES", String.valueOf(current_resource));
+                result.add(current_resource);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return result;
+
+    }
 }
