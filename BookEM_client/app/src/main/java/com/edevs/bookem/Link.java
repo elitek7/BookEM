@@ -1,6 +1,7 @@
 package com.edevs.bookem;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -95,12 +97,14 @@ public class Link {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private static void getAndStoreUserRESPONSE(Context context, Response response) {
 
         User result = (User) Objects.requireNonNull(response.getQueryResult().get(Constants.Response.Classes.USER)).get(0);
         assert result != null;
         Helper.storeUser(context, result);
         Temp.TEMP_USERS.put(result.getUserId(), result);
-
     }
+
+
 }
