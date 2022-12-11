@@ -74,7 +74,7 @@ public class Constants {
 
 
     }
-    
+
     static class URL {
 
         // The URL center
