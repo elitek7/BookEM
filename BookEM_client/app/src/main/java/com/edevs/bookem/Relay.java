@@ -168,4 +168,101 @@ public class Relay extends AsyncTask<String, Void, String> {
         }
 
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    @Override
+    protected void onPostExecute(String s) {
+
+        super.onPostExecute(s);
+        try {
+
+            if (s != null) {
+
+                //Convert our String to a JSON object
+                JSONObject json = new JSONObject(s);
+                Response response;
+
+                // Retrieves the Query result
+                JSONObject json_results = json.optJSONObject(Constants.Response.QUERY_RESULT);
+
+                // Stores the results
+                HashMap<String, ArrayList<?>> results = new HashMap<>();
+                if (json_results != null) {
+                    json_results.keys().forEachRemaining(t -> {
+
+                                JSONArray current = null;
+                                try {
+                                    current = json_results.getJSONArray(t);
+
+                                    switch (t) {
+
+                                        case (Constants.Response.Classes.USER):
+
+                                            results.put(t, Helper.rebaseUsersFromJSON(current));
+                                            break;
+
+                                        case (Constants.Response.Classes.GEM):
+
+                                            results.put(t, Helper.rebaseGemsFromJSON(current));
+                                            break;
+
+
+                                    }
+
+
+                                } catch (JSONException e) {
+                                    Log.i("Error", e.getMessage());
+                                }
+
+                            }
+                    );
+                    Log.i("CONTENT", results.toString());
+                }
+
+                // Retrieves the availability
+                JSONObject json_availability = json.optJSONObject(Constants.Response.IS_AVAILABLE);
+
+                // Stores the availability
+                int availability = Constants.Response.Availability.NONE_AVAILABLE;
+                if (json_availability != null) {
+                    if (json_availability.getBoolean(Constants.Users.USERNAME) && !json_availability.getBoolean(Constants.Users.EMAIL)) {
+
+                        availability = Constants.Response.Availability.USERNAME_AVAILABLE;
+
+                    } else if (!json_availability.getBoolean(Constants.Users.USERNAME) && json_availability.getBoolean(Constants.Users.EMAIL)) {
+
+                        availability = Constants.Response.Availability.EMAIL_AVAILABLE;
+
+                    } else if (json_availability.getBoolean(Constants.Users.USERNAME) && json_availability.getBoolean(Constants.Users.EMAIL)) {
+
+                        availability = Constants.Response.Availability.ALL_AVAILABLE;
+
+                    }
+                }
+
+                // Compactualizes the response
+                response = new Response(
+
+                        json.optInt(Constants.Response.LAST_ID),
+                        json.optString(Constants.Response.ERROR),
+                        json.optBoolean(Constants.Response.SUCCESS),
+                        json.optBoolean(Constants.Response.IS_AUTHENTICATED),
+                        results,
+                        availability
+
+                );
+
+                // Executes
+                executor.ACCESS(response);
+            }
+
+
+        } catch (Exception e) {
+
+            // Handles errors
+            error.DEBUG(api, e);
+
+        }
+
+    }
 }
