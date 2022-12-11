@@ -26,4 +26,28 @@ public class Response {
         this.is_available = is_available;
 
     }
+
+    // Accessors
+    public HashMap<String, ArrayList<?>> getQueryResult() {
+        return query_result;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public boolean isAuthenticated() {
+        return is_authenticated;
+    }
+
+    public int isAvailable() { return is_available; }
+
+    public int getLastId() {
+        return last_id;
+    }
+
 }
