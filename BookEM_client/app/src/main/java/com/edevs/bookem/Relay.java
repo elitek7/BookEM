@@ -76,4 +76,11 @@ public class Relay extends AsyncTask<String, Void, String> {
 
         GET, POST
     }
+
+    public void sendRequest() {
+
+        // Sends the request
+        this.execute();
+
+    }
 }
