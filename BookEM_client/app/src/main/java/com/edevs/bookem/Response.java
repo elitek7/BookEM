@@ -49,5 +49,15 @@ public class Response {
     public int getLastId() {
         return last_id;
     }
-
+    @NonNull
+    @Override
+    public String toString() {
+        return "Response{" +
+                "error='" + error + '\'' +
+                ", success=" + success +
+                ", is_authenticated=" + is_authenticated +
+                ", query_result=" + query_result +
+                ", is_available=" + is_available +
+                '}';
+    }
 }
