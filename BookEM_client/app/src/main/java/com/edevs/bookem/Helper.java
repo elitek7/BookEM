@@ -117,5 +117,12 @@ public abstract class Helper {
             e.printStackTrace();
             return null;
         }
+
+        public static int getOwnerId(Context context) {
+
+            // Gets the ID of the current Logged in Miner
+            return PreferenceManager.getDefaultSharedPreferences(context).getInt(Constants.Users.USER_ID, -1);
+
+        }
     }
 }
