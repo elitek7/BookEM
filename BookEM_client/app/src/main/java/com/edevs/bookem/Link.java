@@ -106,5 +106,12 @@ public class Link {
         Temp.TEMP_USERS.put(result.getUserId(), result);
     }
 
+    public static void error(String api, Context context, Exception e, String error_message) {
 
+        StringBuilder result = new StringBuilder();
+        Arrays.stream(e.getStackTrace()).forEach(t -> result.append(t).append("\n"));
+        Log.i(String.format("Error in API %s in %s", api, e.getMessage()), String.valueOf(result));
+        ContextCompat.getMainExecutor(context).execute(() -> Toast.makeText(context, error_message, Toast.LENGTH_SHORT).show());
+
+    }
 }
