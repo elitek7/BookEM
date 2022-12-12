@@ -35,19 +35,19 @@
 
     <Button
         android:id="@+id/fromBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="86dp"
+        android:layout_height="44dp"
         android:text="From"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="646dp" />
+        tools:layout_editor_absoluteX="62dp"
+        tools:layout_editor_absoluteY="629dp" />
 
     <Button
         android:id="@+id/toBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="84dp"
+        android:layout_height="45dp"
         android:text="To"
-        tools:layout_editor_absoluteX="206dp"
-        tools:layout_editor_absoluteY="646dp" />
+        tools:layout_editor_absoluteX="251dp"
+        tools:layout_editor_absoluteY="628dp" />
 
     <TextView
         android:id="@+id/bookingView"
@@ -58,4 +58,20 @@
         android:textSize="20sp"
         tools:layout_editor_absoluteX="159dp"
         tools:layout_editor_absoluteY="602dp" />
+
+    <TextView
+        android:id="@+id/fromDateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="From"
+        tools:layout_editor_absoluteX="84dp"
+        tools:layout_editor_absoluteY="685dp" />
+
+    <TextView
+        android:id="@+id/toDateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To"
+        tools:layout_editor_absoluteX="266dp"
+        tools:layout_editor_absoluteY="685dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

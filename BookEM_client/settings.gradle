@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "BookEM"
 include ':app'
+include ':SpinnerDatePickerLib'
+include ':SpinnerDatePickerExample'
