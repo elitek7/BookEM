@@ -106,6 +106,19 @@ public class Link {
         Temp.TEMP_USERS.put(result.getUserId(), result);
     }
 
+    public static void getAllResourcesStoreInTempAndUpdateFeed(Context context, SwipeRefreshLayout layout, ListView list, int user_id) {
+
+        Relay relay = new Relay(Constants.APIs.GET_ALL_RESOURCES, response -> getAllResourcesStoreInTempAndUpdateFeedRESPONSE(context, response, layout, list), (api, e) -> error(api, context, e, "Error Fetching from Server"));
+
+        relay.setConnectionMode(Relay.MODE.GET);
+
+        relay.addParam(Constants.Users.USER_ID, user_id);
+
+
+        relay.sendRequest();
+
+    }
+
     public static void error(String api, Context context, Exception e, String error_message) {
 
         StringBuilder result = new StringBuilder();
