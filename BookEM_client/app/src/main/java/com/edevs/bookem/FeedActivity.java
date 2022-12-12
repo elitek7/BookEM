@@ -44,7 +44,7 @@ public class FeedActivity extends AppCompatActivity {
         pullToRefresh = findViewById(R.id.pullToRefreshProfile);
 
         // Retrieves gems from the server an updates the feed once fetches
-        Link.getAllGemsStoreInTempAndUpdateFeed(getApplicationContext(), pullToRefresh, feed, PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt(Constants.Users.USER_ID, -1));
+        Link.getAllResourcesStoreInTempAndUpdateFeed(getApplicationContext(), pullToRefresh, feed, PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt(Constants.Users.USER_ID, -1));
 
         // Adds a refresh functionality to the layout
         pullToRefresh.setOnRefreshListener(this::onRefresh);
@@ -55,7 +55,7 @@ public class FeedActivity extends AppCompatActivity {
     public void onRefresh() {
 
         // Handles the refresh
-        Link.getAllGemsStoreInTempAndUpdateFeed(getApplicationContext(), pullToRefresh, feed, PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt(Constants.Users.USER_ID, -1));
+        Link.getAllResourcesStoreInTempAndUpdateFeed(getApplicationContext(), pullToRefresh, feed, PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt(Constants.Users.USER_ID, -1));
 
     }
 

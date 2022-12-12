@@ -22,7 +22,7 @@ public class Constants {
         public static final String IMAGE = "image";
         public static final String OWNER_ID = "owner_id";
 
-        public static final String TYPE = ;
+       // public static final String TYPE = ;
     }
 
     static class APIs {

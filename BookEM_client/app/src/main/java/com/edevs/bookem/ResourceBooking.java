@@ -26,7 +26,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.Calendar;
 
-public class ResourceBooking extends AppCompatActivity implements DatePickerDialog.OnDateSetListener , DatePickerDialog.OnDateCancelListener{
+public class ResourceBooking extends AppCompatActivity {
 
     TextView fromDateText;
     TextView toDateText;
@@ -48,6 +48,8 @@ public class ResourceBooking extends AppCompatActivity implements DatePickerDial
         fromDateText = (TextView) findViewById(R.id.fromDateText);
         toDateText = (TextView) findViewById(R.id.toDateText);
         simpleDateFormat = new SimpleDateFormat("dd MM yyyy", Locale.US);
+
+
 
         // on below line we are adding click listener for our pick date button
         fromBtn.setOnClickListener(new View.OnClickListener() {
