@@ -118,31 +118,31 @@ public class Link {
         relay.sendRequest();
 
     }
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public static void addReservation(Context context, String date, AppCompatActivity activity) {
+
+        Relay relay = new Relay(Constants.APIs.ADD_RESERVATION, response -> addReservationRESPONSE(context, response, activity), (api, e) -> error(api, context, e, "Error making reservation"));
+
+        relay.setConnectionMode(Relay.MODE.POST);
+
+        relay.addParam(Constants.Reservations.OWNER_ID, PreferenceManager.getDefaultSharedPreferences(context).getInt(Constants.Users.USER_ID, -1));
+        relay.addParam(Constants.Reservations.DATE, ResourceBooking.fromDateTextString);
+
+        relay.sendRequest();
+    }
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    private static void getAllGemsStoreInTempAndUpdateFeedRESPONSE(Context context, Response response, SwipeRefreshLayout layout, ListView list) {
+    private static void addReservationRESPONSE(Context context, Response response, AppCompatActivity activity) {
 
-        ArrayList<User> user_result = (ArrayList<User>) response.getQueryResult().get(Constants.Response.Classes.USER);
-        if(user_result != null) user_result.forEach(user -> Temp.TEMP_USERS.put((user).getUserId(), user));
-
-        ArrayList<Resource> gems_result = (ArrayList<Resource>) response.getQueryResult().get(Constants.Response.Classes.RESOURCE);
-
-        assert gems_result != null;
-        Collections.reverse(gems_result);
-
-        ((ResourcesAdapter) list.getAdapter()).flush();
-        gems_result.forEach(gem -> {
-            Temp.TEMP_RESOURCES.put(gem.getResourceId(), resource);
-            ((ResorcesAdapter) list.getAdapter()).add(resource);
-            list.setAdapter(list.getAdapter());
-        });
-
-
-        layout.setRefreshing(false);
-
+        Reservation reservation = (Reservation) Objects.requireNonNull(response.getQueryResult().get(Constants.Response.Classes.RESERVATION)).get(0);
+        Temp.TEMP_RESERVATIONS.put(reservation.getReservationId(), reservation);
+        Temp.TEMP_LATEST_RESERVATION = reservation.getReservationId();
+        activity.finish();
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public static void error(String api, Context context, Exception e, String error_message) {
 
         StringBuilder result = new StringBuilder();

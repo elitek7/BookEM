@@ -2,8 +2,11 @@ package com.edevs.bookem;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
+
+import androidx.annotation.RequiresApi;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,6 +17,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Locale;
 public abstract class Helper {
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public static void storeUser(Context context, User user) {
 
         // Stores a user in the shared preferences
@@ -56,7 +60,7 @@ public abstract class Helper {
                         current_resource = new Resource(resource_id, user_id, text);
 
 
-                        String img_src = content.getString(Constants.Resources.Content.IMG_SRC);
+                        String img_src = content.getString(Constants.Resources.IMG_SRC);
                         current_resource = new Resource(resource_id, owner_id, img_src);
                 }
 

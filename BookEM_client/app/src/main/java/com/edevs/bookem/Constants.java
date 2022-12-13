@@ -1,5 +1,7 @@
 package com.edevs.bookem;
 
+import java.time.LocalDate;
+
 public class Constants {
 
     // Activity used for cleaner linking between the Client and the Server
@@ -25,11 +27,22 @@ public class Constants {
        // public static final String TYPE = ;
     }
 
+    static class Reservations {
+
+        // The Reservations columns in the database
+
+        public static final String RESERVATION_ID = "reservation_id";
+        public static final LocalDate DATE = "01-01-2001";
+        public static final String OWNER_ID = "owner_id";
+
+        // public static final String TYPE = ;
+    }
+
     static class APIs {
 
         // All the APIs of the app
 
-        public static final String ADD_RESOURCE = "add_resource"; // Adds a resource to the database
+        public static final String ADD_RESERVATION = "add_resource"; // Adds a resource to the database
         public static final String ADD_USER = "add_user"; // Adds a User to the database
         public static final String UPDATE_USER = "update_user"; // Updates a User in the database
         public static final String AUTHENTICATE_LOGIN = "authenticate_login"; // Authenticates a login

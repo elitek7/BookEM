@@ -12,6 +12,7 @@ import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
@@ -32,6 +33,7 @@ public class ResourceBooking extends AppCompatActivity {
     TextView toDateText;
     Button fromBtn;
     Button toBtn;
+    static LocalDate fromDate;
     SimpleDateFormat simpleDateFormat;
 
     @Override
@@ -75,7 +77,6 @@ public class ResourceBooking extends AppCompatActivity {
                                                   int monthOfYear, int dayOfMonth) {
                                 // on below line we are setting date to our text view.
                                 fromDateText.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
-
                             }
                         },
                         // on below line we are passing year,
