@@ -11,6 +11,7 @@ import java.util.TreeMap;
 public class Temp {
     // Holds temporary values
     public static final TreeMap<Integer, Reservation> TEMP_RESERVATIONS = new TreeMap<>(Comparator.reverseOrder()); // Retrieved resources
+    public static final TreeMap<Integer, Resource> TEMP_RESOURCES = new TreeMap<>(Comparator.reverseOrder()); // Retrieved resources
     public static int TEMP_LATEST_RESERVATION = -1; // Latest resource added
     public static final HashMap<Integer, User> TEMP_USERS = new HashMap<>(); // Retrieved users
 }

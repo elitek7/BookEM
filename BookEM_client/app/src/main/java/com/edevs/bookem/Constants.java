@@ -52,7 +52,8 @@ public class Constants {
         public static final String GET_USER = "get_user"; // Gets a user from the database
         public static final String IS_USERNAME_EMAIL_AVAILABLE = "is_username_email_available"; // Checks if the email and username are available
         public static final String GET_ALL_RESERVATIONS_BY_USER = "get_all_reservations_by_user"; // Gets all reservations belonging to a user
-        public static final String DELETE_RESERVATION = "delete_reservation"; // Removes a gem from the database
+        public static final String DELETE_RESERVATION = "delete_reservation"; // Removes a reservation from the database
+        public static final String GET_IMAGES = "get_images";
     }
 
     static class Response {

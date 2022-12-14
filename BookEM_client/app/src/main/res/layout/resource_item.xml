@@ -19,6 +19,7 @@
         android:id="@+id/view"
         android:layout_width="181dp"
         android:layout_height="248dp"
+        android:onClick="viewResource"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,10 +33,12 @@
         android:hint="Resource Name"
         android:textColorHint="#FFFFFF"
         android:textSize="17dp"
+        app:layout_constraintBottom_toBottomOf="@+id/resourcePlaceholder"
         app:layout_constraintEnd_toEndOf="@+id/resourcePlaceholder"
-        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintHorizontal_bias="0.385"
         app:layout_constraintStart_toStartOf="@+id/resourcePlaceholder"
-        tools:layout_editor_absoluteY="442dp" />
+        app:layout_constraintTop_toTopOf="@+id/resourcePlaceholder"
+        app:layout_constraintVertical_bias="0.794" />
 
     <TextView
         android:id="@+id/resourceDescription"
@@ -43,9 +46,11 @@
         android:layout_height="wrap_content"
         android:hint="Resource Description"
         android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/resourcePlaceholder"
         app:layout_constraintEnd_toEndOf="@+id/resourcePlaceholder"
-        app:layout_constraintHorizontal_bias="0.355"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="@+id/resourcePlaceholder"
-        tools:layout_editor_absoluteY="475dp" />
+        app:layout_constraintTop_toBottomOf="@+id/resourceName"
+        app:layout_constraintVertical_bias="0.325" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

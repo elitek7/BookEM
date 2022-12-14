@@ -1,0 +1,4 @@
+#Mon Dec 12 15:49:15 EET 2022
+base.0=C\:\\Users\\elite\\OneDrive\\Desktop\\Courses F22\\CSC498G\\SpinnerDatePicker-master\\SpinnerDatePickerExample\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out
+renamed.0=classes.dex
+path.0=classes.dex

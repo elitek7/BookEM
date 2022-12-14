@@ -59,7 +59,11 @@ public class FeedActivity extends AppCompatActivity {
 
     }
 
-
+    public void viewResource(View V)
+    {
+        Intent i = new Intent(getApplicationContext(), ResourceBooking.class);
+        startActivity(i);
+    }
 
 
 }

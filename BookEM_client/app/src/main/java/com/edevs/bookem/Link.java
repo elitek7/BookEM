@@ -118,6 +118,33 @@ public class Link {
 //        relay.sendRequest();
 //
 //    }
+
+    public static void getAllImages(Context context, SwipeRefreshLayout layout, ListView list) {
+
+        Relay relay = new Relay(Constants.APIs.GET_IMAGES, response -> getAllImagesRESPONSE(context, response, layout, list), (api, e) -> error(api, context, e, "Error Fetching from Server"));
+
+        relay.setConnectionMode(Relay.MODE.GET);
+
+        relay.sendRequest();
+
+    }
+
+    private static void getAllImagesRESPONSE(Context context, Response response, SwipeRefreshLayout layout, ListView list) {
+
+        ArrayList<Resource> resources_result = (ArrayList<Resource>) response.getQueryResult().get(Constants.Response.Classes.RESOURCE);
+
+        assert resources_result != null;
+        Collections.reverse(resources_result);
+
+        ((ResourcesAdapter) list.getAdapter()).flush();
+        resources_result.forEach(resource -> {
+            Temp.TEMP_RESOURCES.put(resource.getResourceId(), resource);
+            ((ResourcesAdapter) list.getAdapter()).add(resource);
+            list.setAdapter(list.getAdapter());
+        });
+        layout.setRefreshing(false);
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     public static void addReservation(Context context, String date, AppCompatActivity activity) {
 
