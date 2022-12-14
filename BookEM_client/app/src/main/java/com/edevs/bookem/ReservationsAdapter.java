@@ -34,13 +34,13 @@ public class ReservationsAdapter extends ArrayAdapter<Reservation>{
 
     public void add(@NonNull Reservation reservation) {
 
-        // Adds a gem to the list
+        // Adds a reservation to the list
         reservations_list.add(reservation);
     }
 
     public void insert(@NonNull Reservation reservation, int i) {
 
-        // Inserts a gem in the list at index i
+        // Inserts a reservation in the list at index i
         reservations_list.add(i, reservation);
     }
 
@@ -64,17 +64,17 @@ public class ReservationsAdapter extends ArrayAdapter<Reservation>{
             listItem = LayoutInflater.from(context).inflate(R.layout.reservation_item, parent, false);
 
 
-          /* // Initializes the elements
-            TextView name = listItem.findViewById(R.id.reservationName);
-            TextView content = listItem.findViewById(R.id.reservationDescription);
-            ImageView image = listItem.findViewById(R.id.reservationPlaceholder);
+           // Initializes the elements
+            TextView fromTextView = listItem.findViewById(R.id.fromTextView);
+            TextView toTextView = listItem.findViewById(R.id.toTextView);
 
             // Populates the Text
 
-            name.setText(currentReservation.getName());
+            fromTextView.setText(currentReservation.getStartDate().toString());
+            toTextView.setText(currentReservation.getEndDate().toString());
             //content.setText(currentReservation.getDescription());
             //image.setImageBitmap(ImageEncoding.convertToBitmap(Constants.APIs.GET_IMAGES));
-*/
+
 
         }else {
             throw new UnsupportedOperationException("Unknown Resource");
