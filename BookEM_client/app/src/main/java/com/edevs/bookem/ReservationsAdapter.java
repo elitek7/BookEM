@@ -63,8 +63,8 @@ public class ReservationsAdapter extends ArrayAdapter<Reservation>{
             // Inflates the layout
             listItem = LayoutInflater.from(context).inflate(R.layout.reservation_item, parent, false);
 
-/*
-            // Initializes the elements
+
+          /*  // Initializes the elements
             TextView name = listItem.findViewById(R.id.reservationName);
             TextView content = listItem.findViewById(R.id.reservationDescription);
             ImageView image = listItem.findViewById(R.id.reservationPlaceholder);
@@ -72,10 +72,10 @@ public class ReservationsAdapter extends ArrayAdapter<Reservation>{
             // Populates the Text
 
             name.setText(currentReservation.getName());
-            content.setText(currentReservation.getDescription());
+            //content.setText(currentReservation.getDescription());
             //image.setImageBitmap(ImageEncoding.convertToBitmap(Constants.APIs.GET_IMAGES));
-
 */
+
         }else {
             throw new UnsupportedOperationException("Unknown Resource");
 
