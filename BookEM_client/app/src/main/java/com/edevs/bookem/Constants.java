@@ -4,8 +4,15 @@ import java.time.LocalDate;
 
 public class Constants {
 
+    public static String[] names = new String[]{"Cleaning Services", "Studio", "Meeting Room", "Truck", "Video Projector"};
+    public String[] descriptions = new String[]{"Outside of routine \n" +
+            "cleaning services", "Photography workspace, 5th Floor", "Fits 25 people, 11th Floor", "Truck", "Epson Home Cinema 5050UB"};
     // Activity used for cleaner linking between the Client and the Server
 
+    public static String[] getNames()
+    {
+        return names;
+    }
     static class Users {
 
         // The Users column in the database

@@ -10,8 +10,12 @@
         <entry key="..\:/xampp/htdocs/BookEM/BookEM_client/app/src/main/res/layout/activity_my_reservations.xml" value="0.25416666666666665" />
         <entry key="..\:/xampp/htdocs/BookEM/BookEM_client/app/src/main/res/layout/activity_register.xml" value="0.20854700854700856" />
         <entry key="..\:/xampp/htdocs/BookEM/BookEM_client/app/src/main/res/layout/activity_splash_screen.xml" value="0.25416666666666665" />
+        <entry key="..\:/xampp/htdocs/BookEM/BookEM_client/app/src/main/res/layout/date_picker.xml" value="0.25416666666666665" />
+        <entry key="..\:/xampp/htdocs/BookEM/BookEM_client/app/src/main/res/layout/date_picker_container.xml" value="0.25416666666666665" />
         <entry key="..\:/xampp/htdocs/BookEM/BookEM_client/app/src/main/res/layout/date_picker_dialog.xml" value="0.25416666666666665" />
+        <entry key="..\:/xampp/htdocs/BookEM/BookEM_client/app/src/main/res/layout/date_picker_dialog_container.xml" value="0.25416666666666665" />
         <entry key="..\:/xampp/htdocs/BookEM/BookEM_client/app/src/main/res/layout/my_reservations.xml" value="0.253125" />
+        <entry key="..\:/xampp/htdocs/BookEM/BookEM_client/app/src/main/res/layout/number_picker_year.xml" value="0.25416666666666665" />
         <entry key="..\:/xampp/htdocs/BookEM/BookEM_client/app/src/main/res/layout/resource_item.xml" value="0.264" />
         <entry key="..\:/xampp/htdocs/BookEM/BookEM_client/app/src/main/res/layout/resource_view.xml" value="0.25416666666666665" />
       </map>
