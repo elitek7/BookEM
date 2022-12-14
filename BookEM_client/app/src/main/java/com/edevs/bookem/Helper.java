@@ -21,7 +21,6 @@ public abstract class Helper {
     public static void storeUser(Context context, User user) {
 
         // Stores a user in the shared preferences
-
         Log.i("Store User", user.toString());
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);// .getSharedPreferences("com.edevs.bookem", Context.MODE_PRIVATE);
         sp.edit().putInt(Constants.Users.USER_ID, user.getUserId()).apply();
@@ -62,11 +61,14 @@ public abstract class Helper {
 
                         String img_src = content.getString(Constants.Resources.IMG_SRC);
                         current_resource = new Resource(resource_id, owner_id, img_src);
-                }
-
 
                 Log.i("RESOURCES", String.valueOf(current_resource));
                 result.add(current_resource);
+
+            }
+
+
+
             } catch (JSONException jsonException) {
             jsonException.printStackTrace();
         }
@@ -120,12 +122,11 @@ public abstract class Helper {
             e.printStackTrace();
             return null;
         }
+    }
+    public static int getOwnerId(Context context) {
 
-        public static int getOwnerId(Context context) {
+        // Gets the ID of the current Logged in Miner
+        return PreferenceManager.getDefaultSharedPreferences(context).getInt(Constants.Users.USER_ID, -1);
 
-            // Gets the ID of the current Logged in Miner
-            return PreferenceManager.getDefaultSharedPreferences(context).getInt(Constants.Users.USER_ID, -1);
-
-        }
     }
 }
