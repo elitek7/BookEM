@@ -141,6 +141,8 @@ public class Link {
             Temp.TEMP_RESOURCES.put(resource.getResourceId(), resource);
             ((ResourcesAdapter) list.getAdapter()).add(resource);
             list.setAdapter(list.getAdapter());
+            ImageView image = list.findViewById(R.id.resourcePlaceholder);
+            image.setImageBitmap(ImageEncoding.convertToBitmap(Constants.APIs.GET_IMAGES));
         });
         layout.setRefreshing(false);
     }
@@ -179,7 +181,7 @@ public class Link {
 
     }
 
-   /* public static void getAllReservationsByUserStoreInTempAndUpdateList(Context context, int owner_id, ListView list, SwipeRefreshLayout layout) {
+   public static void getAllReservationsByUserStoreInTempAndUpdateList(Context context, int owner_id, ListView list, SwipeRefreshLayout layout) {
 
         Relay relay = new Relay(Constants.APIs.GET_ALL_RESERVATIONS_BY_USER, response -> getAllReservationsByUserStoreInTempAndUpdateListRESPONSE(context, response, list, layout), (api, e) -> error(api, context, e, "Error fetching data from the server"));
 
@@ -197,10 +199,8 @@ public class Link {
         Collections.reverse(reservations);
         reservations.forEach(gem -> Temp.TEMP_RESERVATIONS.put(gem.getReservationId(), gem));
 
-        ReservationsAdapter adapter = new ReservationsAdapter(context, reservations, false, list);
+        ReservationsAdapter adapter = new ReservationsAdapter(context, reservations);
         list.setAdapter(adapter);
         layout.setRefreshing(false);
-
-
-    }*/
+    }
 }

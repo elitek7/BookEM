@@ -19,8 +19,8 @@ import java.util.Objects;
 
 public class FeedActivity extends AppCompatActivity {
 
-    ListView feed; // The feed holding the gems
-    SwipeRefreshLayout pullToRefresh;
+    static ListView feed; // The feed holding the gems
+    static SwipeRefreshLayout pullToRefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

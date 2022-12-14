@@ -11,8 +11,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import java.util.List;
 import java.util.Locale;
@@ -69,13 +71,14 @@ public class ResourcesAdapter extends ArrayAdapter<Resource>{
             // Initializes the elements
             TextView name = listItem.findViewById(R.id.resourceName);
             TextView content = listItem.findViewById(R.id.resourceDescription);
-            ImageView image = listItem.findViewById(R.id.resourcePlaceholder);
+            //ImageView image = listItem.findViewById(R.id.resourcePlaceholder);
 
             // Populates the Text
 
                 name.setText(currentResource.getName());
                 content.setText(currentResource.getDescription());
-               image.setImageBitmap(ImageEncoding.convertToBitmap(Constants.APIs.GET_IMAGES));
+               //image.setImageBitmap(ImageEncoding.convertToBitmap(Constants.APIs.GET_IMAGES));
+            Link.getAllImages(context, FeedActivity.pullToRefresh, FeedActivity.feed);
 
 
         }else {
