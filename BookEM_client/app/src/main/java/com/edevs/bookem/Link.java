@@ -148,14 +148,15 @@ public class Link {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public static void addReservation(Context context, String date, AppCompatActivity activity) {
+    public static void addReservation(Context context, LocalDate fromDate, LocalDate toDate, AppCompatActivity activity) {
 
         Relay relay = new Relay(Constants.APIs.ADD_RESERVATION, response -> addReservationRESPONSE(context, response, activity), (api, e) -> error(api, context, e, "Error making reservation"));
 
         relay.setConnectionMode(Relay.MODE.POST);
 
         relay.addParam(Constants.Reservations.OWNER_ID, PreferenceManager.getDefaultSharedPreferences(context).getInt(Constants.Users.USER_ID, -1));
-        relay.addParam(Constants.Reservations.DATE, ResourceBooking.fromDate.toString());
+        relay.addParam(Constants.Reservations.START_DATE, fromDate);
+        relay.addParam(Constants.Reservations.END_DATE, toDate);
 
         relay.sendRequest();
     }

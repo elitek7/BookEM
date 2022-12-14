@@ -199,9 +199,10 @@
         app:layout_constraintGuide_begin="659dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/doneBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="makeReservation"
         android:text="Done"
         app:cornerRadius="90dp"
         app:layout_constraintBottom_toBottomOf="parent"

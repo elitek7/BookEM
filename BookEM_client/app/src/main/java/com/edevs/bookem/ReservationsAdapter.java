@@ -64,7 +64,7 @@ public class ReservationsAdapter extends ArrayAdapter<Reservation>{
             listItem = LayoutInflater.from(context).inflate(R.layout.reservation_item, parent, false);
 
 
-          /*  // Initializes the elements
+          /* // Initializes the elements
             TextView name = listItem.findViewById(R.id.reservationName);
             TextView content = listItem.findViewById(R.id.reservationDescription);
             ImageView image = listItem.findViewById(R.id.reservationPlaceholder);

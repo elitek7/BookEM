@@ -64,6 +64,10 @@ public class FeedActivity extends AppCompatActivity {
         Intent i = new Intent(getApplicationContext(), ResourceBooking.class);
         startActivity(i);
     }
-
+    public void viewReservations(View V)
+    {
+        Intent i = new Intent(getApplicationContext(), YourReservationsActivity.class);
+        startActivity(i);
+    }
 
 }
