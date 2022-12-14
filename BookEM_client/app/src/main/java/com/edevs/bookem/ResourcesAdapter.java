@@ -72,11 +72,11 @@ public class ResourcesAdapter extends ArrayAdapter<Resource>{
             ImageView image = listItem.findViewById(R.id.resourcePlaceholder);
 
             // Populates the Text
-            for(int i = 0; i<5; i++) {
+
                 name.setText(currentResource.getName());
-                content.setText(Constants.names[i]);
-               //image.setImageBitmap(ImageEncoding.convertToBitmap(Constants.APIs.GET_IMAGES));
-            }
+                content.setText(currentResource.getDescription());
+               image.setImageBitmap(ImageEncoding.convertToBitmap(Constants.APIs.GET_IMAGES));
+
 
         }else {
             throw new UnsupportedOperationException("Unknown Resource");

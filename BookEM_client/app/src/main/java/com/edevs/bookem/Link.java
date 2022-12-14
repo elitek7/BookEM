@@ -178,4 +178,29 @@ public class Link {
         ContextCompat.getMainExecutor(context).execute(() -> Toast.makeText(context, error_message, Toast.LENGTH_SHORT).show());
 
     }
+
+    public static void getAllReservationsByUserStoreInTempAndUpdateList(Context context, int owner_id, ListView list, SwipeRefreshLayout layout) {
+
+        Relay relay = new Relay(Constants.APIs.GET_ALL_RESERVATIONS_BY_USER, response -> getAllReservationsByUserStoreInTempAndUpdateListRESPONSE(context, response, list, layout), (api, e) -> error(api, context, e, "Error fetching data from the server"));
+
+        relay.setConnectionMode(Relay.MODE.GET);
+        relay.addParam(Constants.Reservations.OWNER_ID, owner_id);
+        relay.addParam(Constants.Users.USER_ID, PreferenceManager.getDefaultSharedPreferences(context).getInt(Constants.Users.USER_ID, -1));
+        relay.sendRequest();
+
+
+    }
+
+    private static void getAllReservationsByUserStoreInTempAndUpdateListRESPONSE(Context context, Response response, ListView list, SwipeRefreshLayout layout) {
+
+        ArrayList<Reservation> reservations = (ArrayList<Reservation>) response.getQueryResult().get(Constants.Response.Classes.RESERVATION);
+        Collections.reverse(reservations);
+        reservations.forEach(gem -> Temp.TEMP_RESERVATIONS.put(gem.getReservationId(), gem));
+
+        ReservationsAdapter adapter = new ReservationsAdapter(context, reservations, false, list);
+        list.setAdapter(adapter);
+        layout.setRefreshing(false);
+
+
+    }
 }

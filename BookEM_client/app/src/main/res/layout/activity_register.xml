@@ -106,7 +106,7 @@
         android:id="@+id/signInBtn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:backgroundTint="#00FFFFFF"
         android:fontFamily="sans-serif-black"
         android:onClick="signIn"
@@ -218,6 +218,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="708dp" />
+        app:layout_constraintGuide_begin="696dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
