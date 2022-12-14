@@ -66,11 +66,40 @@ public abstract class Helper {
             result.add(current_resource);
 
         }
+        return result;
+    }
+
+    public static ArrayList<Reservation> rebaseReservationsFromJSON() {
+
+        String[] reservations = {"cleaning_services", "lighting_system", "meeting_room", "pickup_truck", "video_projector"};
+        // Converts a JSON array to a Resource array
+        ArrayList<Reservation> result = new ArrayList<>();
+        for (int i = 0; i < reservations.length; i++) {
+
+            //JSONObject current = json.getJSONObject(i);
+
+//                int resource_id = current.getInt(Constants.Resources.RESOURCE_ID);
+//                int owner_id = current.getInt(Constants.Resources.OWNER_ID);
+//                JSONObject content = new JSONObject(current.getString(Constants.Resources.DESCRIPTION));
+//                Resource current_resource = null;
+
+//                        String text = content.getString(Constants.Resources.DESCRIPTION);
+            Reservation current_reservation = new Reservation(i, ResourceBooking.fromDate, ResourceBooking.toDate);
+
+
+//                        String img_src = content.getString(Constants.Resources.IMG_SRC);
+//                        current_resource = new Resource(resource_id, owner_id, img_src);
+
+            Log.i("RESERVATIONS", String.valueOf(current_reservation));
+            result.add(current_reservation);
+
+        }
 
 
         return result;
 
     }
+
 
     public static ArrayList<User> rebaseUsersFromJSON(JSONArray json) {
 

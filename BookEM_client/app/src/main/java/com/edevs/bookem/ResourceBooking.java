@@ -34,6 +34,7 @@ public class ResourceBooking extends AppCompatActivity implements View.OnClickLi
     Button fromBtn;
     Button toBtn;
     static LocalDate fromDate;
+    static LocalDate toDate;
     SimpleDateFormat simpleDateFormat;
     int year, month, day, year2, month2, day2;
 
