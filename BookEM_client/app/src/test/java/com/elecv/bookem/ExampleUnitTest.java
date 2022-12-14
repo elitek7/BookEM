@@ -1,4 +1,4 @@
-package com.edevs.bookem;
+package com.elecv.bookem;
 
 import org.junit.Test;
 

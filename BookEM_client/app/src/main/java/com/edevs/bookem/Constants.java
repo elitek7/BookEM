@@ -32,7 +32,7 @@ public class Constants {
         // The Reservations columns in the database
 
         public static final String RESERVATION_ID = "reservation_id";
-        public static final LocalDate DATE = "01-01-2001";
+        public static final String DATE = "date";
         public static final String OWNER_ID = "owner_id";
 
         // public static final String TYPE = ;

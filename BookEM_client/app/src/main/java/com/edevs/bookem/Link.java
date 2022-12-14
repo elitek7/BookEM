@@ -106,18 +106,18 @@ public class Link {
         Temp.TEMP_USERS.put(result.getUserId(), result);
     }
 
-    public static void getAllResourcesStoreInTempAndUpdateFeed(Context context, SwipeRefreshLayout layout, ListView list, int user_id) {
-
-        Relay relay = new Relay(Constants.APIs.GET_ALL_RESOURCES, response -> getAllResourcesStoreInTempAndUpdateFeedRESPONSE(context, response, layout, list), (api, e) -> error(api, context, e, "Error Fetching from Server"));
-
-        relay.setConnectionMode(Relay.MODE.GET);
-
-        relay.addParam(Constants.Users.USER_ID, user_id);
-
-
-        relay.sendRequest();
-
-    }
+//    public static void getAllResourcesStoreInTempAndUpdateFeed(Context context, SwipeRefreshLayout layout, ListView list, int user_id) {
+//
+//        Relay relay = new Relay(Constants.APIs.GET_ALL_RESOURCES, response -> getAllResourcesStoreInTempAndUpdateFeedRESPONSE(context, response, layout, list), (api, e) -> error(api, context, e, "Error Fetching from Server"));
+//
+//        relay.setConnectionMode(Relay.MODE.GET);
+//
+//        relay.addParam(Constants.Users.USER_ID, user_id);
+//
+//
+//        relay.sendRequest();
+//
+//    }
     @RequiresApi(api = Build.VERSION_CODES.N)
     public static void addReservation(Context context, String date, AppCompatActivity activity) {
 
@@ -126,7 +126,7 @@ public class Link {
         relay.setConnectionMode(Relay.MODE.POST);
 
         relay.addParam(Constants.Reservations.OWNER_ID, PreferenceManager.getDefaultSharedPreferences(context).getInt(Constants.Users.USER_ID, -1));
-        relay.addParam(Constants.Reservations.DATE, ResourceBooking.fromDateTextString);
+        relay.addParam(Constants.Reservations.DATE, ResourceBooking.fromDate.toString());
 
         relay.sendRequest();
     }

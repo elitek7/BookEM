@@ -37,14 +37,14 @@ public class FeedActivity extends AppCompatActivity {
 
 
         // Prepares the adapted for the feed
-        ResourcesAdapter adapter = new ResourcesAdapter(FeedActivity.this, feed);
+        ResourcesAdapter adapter = new ResourcesAdapter(FeedActivity.this, Helper.rebaseResourcesFromJSON());
         feed.setAdapter(adapter);
 
         // Initializes the layout holding the feed
         pullToRefresh = findViewById(R.id.pullToRefreshProfile);
 
         // Retrieves gems from the server an updates the feed once fetches
-        Link.getAllResourcesStoreInTempAndUpdateFeed(getApplicationContext(), pullToRefresh, feed, PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt(Constants.Users.USER_ID, -1));
+        //Link.getAllResourcesStoreInTempAndUpdateFeed(getApplicationContext(), pullToRefresh, feed, PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt(Constants.Users.USER_ID, -1));
 
         // Adds a refresh functionality to the layout
         pullToRefresh.setOnRefreshListener(this::onRefresh);
@@ -55,7 +55,7 @@ public class FeedActivity extends AppCompatActivity {
     public void onRefresh() {
 
         // Handles the refresh
-        Link.getAllResourcesStoreInTempAndUpdateFeed(getApplicationContext(), pullToRefresh, feed, PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt(Constants.Users.USER_ID, -1));
+     //   Link.getAllResourcesStoreInTempAndUpdateFeed(getApplicationContext(), pullToRefresh, feed, PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt(Constants.Users.USER_ID, -1));
 
     }
 

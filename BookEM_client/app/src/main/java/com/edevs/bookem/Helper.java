@@ -21,7 +21,6 @@ public abstract class Helper {
     public static void storeUser(Context context, User user) {
 
         // Stores a user in the shared preferences
-
         Log.i("Store User", user.toString());
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);// .getSharedPreferences("com.edevs.bookem", Context.MODE_PRIVATE);
         sp.edit().putInt(Constants.Users.USER_ID, user.getUserId()).apply();
@@ -42,34 +41,32 @@ public abstract class Helper {
         return new User(user_id, username, password, email);
     }
 
-    public static ArrayList<Resource> rebaseResourcesFromJSON(JSONArray json) {
+    public static ArrayList<Resource> rebaseResourcesFromJSON() {
 
+        String[] resources = {"cleaning_services", "lighting_system", "meeting_room", "pickup_truck", "video_projector"};
         // Converts a JSON array to a Resource array
         ArrayList<Resource> result = new ArrayList<>();
-        try {
-            for (int i = 0; i < json.length(); i++) {
+        for (int i = 0; i < resources.length; i++) {
 
-                JSONObject current = json.getJSONObject(i);
+            //JSONObject current = json.getJSONObject(i);
 
-                int resource_id = current.getInt(Constants.Resources.RESOURCE_ID);
-                int owner_id = current.getInt(Constants.Resources.OWNER_ID);
-                JSONObject content = new JSONObject(current.getString(Constants.Resources.DESCRIPTION));
-                Resource current_resource = null;
+//                int resource_id = current.getInt(Constants.Resources.RESOURCE_ID);
+//                int owner_id = current.getInt(Constants.Resources.OWNER_ID);
+//                JSONObject content = new JSONObject(current.getString(Constants.Resources.DESCRIPTION));
+//                Resource current_resource = null;
 
-                        String text = content.getString(Constants.Resources.DESCRIPTION);
-                        current_resource = new Resource(resource_id, user_id, text);
-
-
-                        String img_src = content.getString(Constants.Resources.IMG_SRC);
-                        current_resource = new Resource(resource_id, owner_id, img_src);
-                }
+//                        String text = content.getString(Constants.Resources.DESCRIPTION);
+                    Resource current_resource = new Resource(i, resources[i], "");
 
 
-                Log.i("RESOURCES", String.valueOf(current_resource));
-                result.add(current_resource);
-            } catch (JSONException jsonException) {
-            jsonException.printStackTrace();
+//                        String img_src = content.getString(Constants.Resources.IMG_SRC);
+//                        current_resource = new Resource(resource_id, owner_id, img_src);
+
+            Log.i("RESOURCES", String.valueOf(current_resource));
+            result.add(current_resource);
+
         }
+
 
         return result;
 
@@ -120,12 +117,11 @@ public abstract class Helper {
             e.printStackTrace();
             return null;
         }
+    }
+    public static int getOwnerId(Context context) {
 
-        public static int getOwnerId(Context context) {
+        // Gets the ID of the current Logged in Miner
+        return PreferenceManager.getDefaultSharedPreferences(context).getInt(Constants.Users.USER_ID, -1);
 
-            // Gets the ID of the current Logged in Miner
-            return PreferenceManager.getDefaultSharedPreferences(context).getInt(Constants.Users.USER_ID, -1);
-
-        }
     }
 }
