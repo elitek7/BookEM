@@ -54,7 +54,7 @@ public class Constants {
         public static final String ADD_USER = "add_user"; // Adds a User to the database
         public static final String UPDATE_USER = "update_user"; // Updates a User in the database
         public static final String AUTHENTICATE_LOGIN = "authenticate_login"; // Authenticates a login
-        public static final String GET_ALL_RESERVATIONS_ON_RESOURCE = "get_all_diamonds_on_gem"; // Gets all reservations on a resource
+        public static final String GET_ALL_RESERVATIONS_ON_RESOURCE = "get_all_reservations_on_resource"; // Gets all reservations on a resource
         public static final String GET_ALL_RESOURCES = "get_all_resources"; // Gets all resources
         public static final String GET_ALL_USERS = "get_all_users"; // Gets all Users (WIP)
         public static final String GET_USER = "get_user"; // Gets a user from the database

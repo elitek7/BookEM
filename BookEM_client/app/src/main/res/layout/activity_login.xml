@@ -23,16 +23,17 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <EditText
-        android:id="@+id/emailEdt"
+        android:id="@+id/usernameEdt2"
         android:layout_width="343dp"
         android:layout_height="53dp"
 
         android:background="@drawable/input_bg"
         android:elegantTextHeight="true"
         android:ems="10"
-        android:hint="Email"
+        android:hint="Username"
         android:inputType="textPersonName"
         android:paddingStart="10dp"
+        android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/guideline12"
         app:layout_constraintEnd_toStartOf="@+id/guideline10"
@@ -52,6 +53,7 @@
         android:hint="Password"
         android:inputType="textPassword"
         android:paddingStart="10dp"
+        android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
         app:layout_constraintEnd_toStartOf="@+id/guideline10"
@@ -171,5 +173,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="549dp" />
+
+    <TextView
+        android:id="@+id/loginErrorBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/signInBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEdt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,6 +29,38 @@ import java.util.Objects;
 public class Link {
     // Middle ground between client and server
 
+    public static void authenticateUser(Context context, String username, String password, TextView error_box) {
+
+        Relay relay = new Relay(Constants.APIs.AUTHENTICATE_LOGIN, response -> authenticateUserRESPONSE(context, response, error_box), (api, e) -> error(api, context, e, "Error Connecting to Server"));
+
+        relay.setConnectionMode(Relay.MODE.POST);
+
+        relay.addParam(Constants.Users.USERNAME, username);
+        relay.addParam(Constants.Users.PASSWORD, password);
+
+        relay.sendRequest();
+
+    }
+
+    private static void authenticateUserRESPONSE(Context context, Response response, TextView error_box) {
+
+        if (response.isAuthenticated()) {
+
+            User user = (User) response.getQueryResult().get(Constants.Response.Classes.USER).get(0);
+            assert user != null;
+            Helper.storeUser(context, user);
+            Intent i = new Intent(context, FeedActivity.class);
+            context.startActivity(i);
+
+        } else {
+
+            error_box.setText( "Invalid Credentials");
+
+        }
+
+    }
+
+
     public static void checkAvailability(Context context, User user, TextView error_box) {
 
         Relay relay = new Relay(Constants.APIs.IS_USERNAME_EMAIL_AVAILABLE, response -> checkAvailabilityRESPONSE(context, response, user, error_box), (api, e) -> error(api, context, e, "Error Connecting to Server"));
@@ -147,6 +179,33 @@ public class Link {
         layout.setRefreshing(false);
     }
 
+    public static void getAllReservations(Context context, SwipeRefreshLayout layout, ListView list) {
+
+        Relay relay = new Relay(Constants.APIs.GET_ALL_RESERVATIONS_ON_RESOURCE, response -> getAllImagesRESPONSE(context, response, layout, list), (api, e) -> error(api, context, e, "Error Fetching from Server"));
+
+        relay.setConnectionMode(Relay.MODE.GET);
+
+        relay.sendRequest();
+
+    }
+
+    private static void getAllReservationsRESPONSE(Context context, Response response, SwipeRefreshLayout layout, ListView list) {
+
+        ArrayList<Resource> resources_result = (ArrayList<Resource>) response.getQueryResult().get(Constants.Response.Classes.RESOURCE);
+
+        assert resources_result != null;
+        Collections.reverse(resources_result);
+
+        ((ResourcesAdapter) list.getAdapter()).flush();
+        resources_result.forEach(resource -> {
+            Temp.TEMP_RESOURCES.put(resource.getResourceId(), resource);
+            ((ResourcesAdapter) list.getAdapter()).add(resource);
+            list.setAdapter(list.getAdapter());
+            ImageView image = list.findViewById(R.id.resourcePlaceholder);
+            image.setImageBitmap(ImageEncoding.convertToBitmap(Constants.APIs.GET_IMAGES));
+        });
+        layout.setRefreshing(false);
+    }
     @RequiresApi(api = Build.VERSION_CODES.N)
     public static void addReservation(Context context, LocalDate fromDate, LocalDate toDate, AppCompatActivity activity) {
 
@@ -219,7 +278,7 @@ public class Link {
 
     private static void deleteGemRESPONSE(Context context, Response response, int owner_id, ListView list) {
 
-        ((ReservationsAdapter)list.getAdapter()).remove(Temp.TEMP_RESERVATIONS.containsKey(owner_id) ? Temp.TEMP_RESERVATIONS.get(owner_id));
+        ((ReservationsAdapter)list.getAdapter()).remove(Temp.TEMP_RESERVATIONS.containsKey(owner_id) ? Temp.TEMP_RESERVATIONS.get(owner_id): Temp.TEMP_RESERVATIONS.get(owner_id));
         Temp.TEMP_RESERVATIONS.remove(owner_id);
         list.invalidateViews();
 
