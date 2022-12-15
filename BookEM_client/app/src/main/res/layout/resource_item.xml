@@ -29,28 +29,26 @@
         android:id="@+id/resourceName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-black"
         android:hint="Resource Name"
         android:textColorHint="#FFFFFF"
         android:textSize="17dp"
-        app:layout_constraintBottom_toBottomOf="@+id/resourcePlaceholder"
         app:layout_constraintEnd_toEndOf="@+id/resourcePlaceholder"
         app:layout_constraintHorizontal_bias="0.385"
         app:layout_constraintStart_toStartOf="@+id/resourcePlaceholder"
-        app:layout_constraintTop_toTopOf="@+id/resourcePlaceholder"
-        app:layout_constraintVertical_bias="0.794" />
+        app:layout_constraintTop_toBottomOf="@+id/resourcePlaceholder" />
 
     <TextView
         android:id="@+id/resourceDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:hint="Resource Description"
         android:textColorHint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/resourcePlaceholder"
         app:layout_constraintEnd_toEndOf="@+id/resourcePlaceholder"
         app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="@+id/resourcePlaceholder"
-        app:layout_constraintTop_toBottomOf="@+id/resourceName"
-        app:layout_constraintVertical_bias="0.325" />
+        app:layout_constraintTop_toBottomOf="@+id/resourceName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

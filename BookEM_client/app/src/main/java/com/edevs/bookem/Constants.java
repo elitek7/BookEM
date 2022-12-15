@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Constants {
 
-    public static String[] names = new String[]{"Cleaning Services", "Studio", "Meeting Room", "Truck", "Video Projector"};
+    public static String[] names = new String[]{"Video Projector", "Truck", "Meeting Room", "Studio", "Cleaning Services"};
     public String[] descriptions = new String[]{"Outside of routine \n" +
             "cleaning services", "Photography workspace, 5th Floor", "Fits 25 people, 11th Floor", "Truck", "Epson Home Cinema 5050UB"};
     // Activity used for cleaner linking between the Client and the Server
@@ -102,7 +102,7 @@ public class Constants {
 
         // The URL center
 
-        public static final String MASTER_URL = "http://192.168.1.71/BookEM/BookEM_server";
+        public static final String MASTER_URL = "http://192.168.209.1/BookEM/BookEM_server/";
         public static String buildUrl(String API) {
             return MASTER_URL + API + ".php";
         }

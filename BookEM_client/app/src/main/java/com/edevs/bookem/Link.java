@@ -147,7 +147,7 @@ public class Link {
 //
 //    }
 
-    public static void getAllImages(Context context, SwipeRefreshLayout layout, ListView list) {
+    public static void getAllImages(Context context, ResourcesAdapter layout, ListView list) {
 
         Relay relay = new Relay(Constants.APIs.GET_IMAGES, response -> getAllImagesRESPONSE(context, response, layout, list), (api, e) -> error(api, context, e, "Error Fetching from Server"));
 
@@ -157,22 +157,23 @@ public class Link {
 
     }
 
-    private static void getAllImagesRESPONSE(Context context, Response response, SwipeRefreshLayout layout, ListView list) {
+    private static void getAllImagesRESPONSE(Context context, Response response, ResourcesAdapter layout, ListView list) {
 
         ArrayList<String> resources_result = (ArrayList<String>) response.getQueryResult().get("Images");
         ArrayList<ImageView> images = new ArrayList<>();
         assert resources_result != null;
         Collections.reverse(resources_result);
 
-        ((ResourcesAdapter) list.getAdapter()).flush();
+        //((ResourcesAdapter) list.getAdapter()).flush();
         for (int i = 0; i < resources_result.size(); i++) {
             //Temp.TEMP_RESOURCES.put(resource.getResourceId(), resource);
             //((ResourcesAdapter) list.getAdapter()).add(resource);
             //list.setAdapter(list.getAdapter());
-            Bitmap img = ImageEncoding.convertToBitmap(Constants.APIs.GET_IMAGES);
-            ((ResourcesAdapter) list.getAdapter()).add(new Resource(i, Constants.names[i], "", img));
+            Bitmap img = ImageEncoding.convertToBitmap(resources_result.get(i));
+            layout.add(new Resource(i, Constants.names[i], "", img));
         }
-        layout.setRefreshing(false);
+        list.setAdapter(layout);
+        //layout.setRefreshing(false);
     }
 
     public static void getAllReservationsOnResource(Context context, SwipeRefreshLayout layout, ListView list) {

@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 
@@ -38,9 +39,10 @@ public class FeedActivity extends AppCompatActivity {
 
         // Prepares the adapted for the feed
         ResourcesAdapter adapter = new ResourcesAdapter(FeedActivity.this, new ArrayList<>());
-        Link.getAllImages(FeedActivity.this, pullToRefresh, feed);
-
         feed.setAdapter(adapter);
+        Link.getAllImages(FeedActivity.this, adapter, feed);
+
+
 
         // Initializes the layout holding the feed
         pullToRefresh = findViewById(R.id.pullToRefreshProfile);
