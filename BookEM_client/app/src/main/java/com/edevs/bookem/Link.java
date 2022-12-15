@@ -1,6 +1,8 @@
 package com.edevs.bookem;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.media.Image;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -16,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -163,19 +166,19 @@ public class Link {
 
     private static void getAllImagesRESPONSE(Context context, Response response, SwipeRefreshLayout layout, ListView list) {
 
-        ArrayList<Resource> resources_result = (ArrayList<Resource>) response.getQueryResult().get(Constants.Response.Classes.RESOURCE);
-
+        ArrayList<String> resources_result = (ArrayList<String>) response.getQueryResult().get("Images");
+ArrayList<ImageView> images = new ArrayList<>();
         assert resources_result != null;
         Collections.reverse(resources_result);
 
         ((ResourcesAdapter) list.getAdapter()).flush();
-        resources_result.forEach(resource -> {
-            Temp.TEMP_RESOURCES.put(resource.getResourceId(), resource);
-            ((ResourcesAdapter) list.getAdapter()).add(resource);
-            list.setAdapter(list.getAdapter());
-            ImageView image = list.findViewById(R.id.resourcePlaceholder);
-            image.setImageBitmap(ImageEncoding.convertToBitmap(Constants.APIs.GET_IMAGES));
-        });
+        for(int i = 0; i < resources_result.size(); i++) {
+            //Temp.TEMP_RESOURCES.put(resource.getResourceId(), resource);
+            //((ResourcesAdapter) list.getAdapter()).add(resource);
+            //list.setAdapter(list.getAdapter());
+            Bitmap img = ImageEncoding.convertToBitmap(Constants.APIs.GET_IMAGES);
+            ((ResourcesAdapter) list.getAdapter()).add(new Resource(i, Constants.names[i], "", img));
+        }
         layout.setRefreshing(false);
     }
 

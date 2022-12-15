@@ -9,6 +9,7 @@ $img = file_get_contents('http://localhost/BookEM/BookEM_server/assets/' . $i . 
 $data[] = base64_encode($img);
 }
 // Display the output
-echo json_encode($data);
-
+$a["Images"] = $data; 
+$output["query_result"] = $a;
+echo json_encode($output);
 echo "Succeeded";

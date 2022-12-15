@@ -71,14 +71,13 @@ public class ResourcesAdapter extends ArrayAdapter<Resource>{
             // Initializes the elements
             TextView name = listItem.findViewById(R.id.resourceName);
             TextView content = listItem.findViewById(R.id.resourceDescription);
-            //ImageView image = listItem.findViewById(R.id.resourcePlaceholder);
+            ImageView image = listItem.findViewById(R.id.resourcePlaceholder);
 
             // Populates the Text
 
                 name.setText(currentResource.getName());
                 content.setText(currentResource.getDescription());
-               //image.setImageBitmap(ImageEncoding.convertToBitmap(Constants.APIs.GET_IMAGES));
-            Link.getAllImages(context, FeedActivity.pullToRefresh, FeedActivity.feed);
+               image.setImageBitmap(currentResource.getImg());
 
 
         }else {
