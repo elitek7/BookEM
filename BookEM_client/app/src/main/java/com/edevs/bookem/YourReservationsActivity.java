@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class YourReservationsActivity extends AppCompatActivity{
+
     static ListView feed; // The feed holding the gems
     static SwipeRefreshLayout pullToRefresh;
 

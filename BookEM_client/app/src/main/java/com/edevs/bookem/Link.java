@@ -204,4 +204,24 @@ public class Link {
         list.setAdapter(adapter);
         layout.setRefreshing(false);
     }
+
+    public static void deleteReservation(Context context, int owner_id, ListView list) {
+
+        Relay relay = new Relay(Constants.APIs.DELETE_RESERVATION, response -> deleteGemRESPONSE(context, response, owner_id, list), (api, e) -> error(api, context, e, "Error deleting reservation"));
+
+        relay.setConnectionMode(Relay.MODE.GET);
+
+        relay.addParam(Constants.Reservations.RESERVATION_ID, owner_id);
+
+        relay.sendRequest();
+
+    }
+
+    private static void deleteGemRESPONSE(Context context, Response response, int owner_id, ListView list) {
+
+        ((ReservationsAdapter)list.getAdapter()).remove(Temp.TEMP_RESERVATIONS.containsKey(owner_id) ? Temp.TEMP_RESERVATIONS.get(owner_id));
+        Temp.TEMP_RESERVATIONS.remove(owner_id);
+        list.invalidateViews();
+
+    }
 }

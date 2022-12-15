@@ -1,6 +1,8 @@
 package com.edevs.bookem;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +21,11 @@ import java.util.Locale;
 import java.util.Optional;
 public class ReservationsAdapter extends ArrayAdapter<Reservation>{
     // The adapter forking all the feeds in the App
+    int owner_id;
 
     private final Context context; // The context of the Parent feed
+    SharedPreferences sp;
+
     private final List<Reservation> reservations_list; // The list that this feed will populate
 
 
@@ -28,6 +33,7 @@ public class ReservationsAdapter extends ArrayAdapter<Reservation>{
 
         super(context, 0, reservations_list);
         this.context = context;
+        sp = PreferenceManager.getDefaultSharedPreferences(context);
         this.reservations_list = reservations_list;
 
     }
@@ -75,11 +81,18 @@ public class ReservationsAdapter extends ArrayAdapter<Reservation>{
             //content.setText(currentReservation.getDescription());
             //image.setImageBitmap(ImageEncoding.convertToBitmap(Constants.APIs.GET_IMAGES));
 
+            // Retrieves the ID of the User this reservation belong to
+            owner_id = sp.getInt(Constants.Users.USER_ID, -1);
 
         }else {
             throw new UnsupportedOperationException("Unknown Resource");
 
         }return listItem;
 
+    }
+
+    public void cancelReservation(View v)
+    {
+        Link.deleteReservation(context, owner_id, YourReservationsActivity.feed);
     }
 }
