@@ -46,7 +46,7 @@ public abstract class Helper {
         String[] resources = {"cleaning_services", "lighting_system", "meeting_room", "pickup_truck", "video_projector"};
         // Converts a JSON array to a Resource array
         ArrayList<Resource> result = new ArrayList<>();
-        for (int i = 0; i < resources.length; i++) {
+       // for (int i = 0; i < resources.length; i++) {
 
             //JSONObject current = json.getJSONObject(i);
 
@@ -58,14 +58,11 @@ public abstract class Helper {
 //                        String text = content.getString(Constants.Resources.DESCRIPTION);
 //                    Resource current_resource = new Resource(i, resources[i], "");
 
-
+           // Log.i("RESOURCES", String.valueOf(current_resource));
+           // result.add(current_resource);
 //                        String img_src = content.getString(Constants.Resources.IMG_SRC);
 //                        current_resource = new Resource(resource_id, owner_id, img_src);
-
-            Log.i("RESOURCES", String.valueOf(current_resource));
-            result.add(current_resource);
-
-        }
+      //  }
         return result;
     }
 
