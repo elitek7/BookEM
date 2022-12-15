@@ -50,7 +50,7 @@ public class Constants {
 
         // All the APIs of the app
 
-        public static final String ADD_RESERVATION = "add_resource"; // Adds a resource to the database
+        public static final String ADD_RESERVATION = "add_reservation"; // Adds a resource to the database lol
         public static final String ADD_USER = "add_user"; // Adds a User to the database
         public static final String UPDATE_USER = "update_user"; // Updates a User in the database
         public static final String AUTHENTICATE_LOGIN = "authenticate_login"; // Authenticates a login

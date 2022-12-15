@@ -215,6 +215,8 @@ public class Link {
         relay.addParam(Constants.Reservations.OWNER_ID, PreferenceManager.getDefaultSharedPreferences(context).getInt(Constants.Users.USER_ID, -1));
         relay.addParam(Constants.Reservations.START_DATE, fromDate);
         relay.addParam(Constants.Reservations.END_DATE, toDate);
+        relay.addParam("reservation_id", 0);
+
 
         relay.sendRequest();
     }
