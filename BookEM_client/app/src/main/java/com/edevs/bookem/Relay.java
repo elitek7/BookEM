@@ -201,10 +201,10 @@ public class Relay extends AsyncTask<String, Void, String> {
                                             results.put(t, Helper.rebaseUsersFromJSON(current));
                                             break;
 
-                                        case (Constants.Response.Classes.RESOURCE):
-
-                                            results.put(t, Helper.rebaseResourcesFromJSON());
-                                            break;
+//                                        case (Constants.Response.Classes.RESOURCE):
+//
+//                                            results.put(t, Helper.rebaseResourcesFromJSON());
+//                                            break;
                                     }
 
 

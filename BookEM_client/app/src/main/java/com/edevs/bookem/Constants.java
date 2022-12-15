@@ -102,7 +102,7 @@ public class Constants {
 
         // The URL center
 
-        public static final String MASTER_URL = "192.168.1.71/BookEM/BookEM_server";
+        public static final String MASTER_URL = "https://192.168.1.71/BookEM/BookEM_server";
         public static String buildUrl(String API) {
             return MASTER_URL + API + ".php";
         }

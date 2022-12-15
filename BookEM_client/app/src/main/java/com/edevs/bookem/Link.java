@@ -1,13 +1,11 @@
 package com.edevs.bookem;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,17 +16,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Objects;
+
 public class Link {
     // Middle ground between client and server
 
@@ -57,7 +50,7 @@ public class Link {
 
         } else {
 
-            error_box.setText( "Invalid Credentials");
+            error_box.setText("Invalid Credentials");
 
         }
 
@@ -167,12 +160,12 @@ public class Link {
     private static void getAllImagesRESPONSE(Context context, Response response, SwipeRefreshLayout layout, ListView list) {
 
         ArrayList<String> resources_result = (ArrayList<String>) response.getQueryResult().get("Images");
-ArrayList<ImageView> images = new ArrayList<>();
+        ArrayList<ImageView> images = new ArrayList<>();
         assert resources_result != null;
         Collections.reverse(resources_result);
 
         ((ResourcesAdapter) list.getAdapter()).flush();
-        for(int i = 0; i < resources_result.size(); i++) {
+        for (int i = 0; i < resources_result.size(); i++) {
             //Temp.TEMP_RESOURCES.put(resource.getResourceId(), resource);
             //((ResourcesAdapter) list.getAdapter()).add(resource);
             //list.setAdapter(list.getAdapter());
@@ -202,14 +195,15 @@ ArrayList<ImageView> images = new ArrayList<>();
         //((ReservationsAdapter) list.getAdapter()).flush();
         reservations_result.forEach(reservation -> {
 
-           // Temp.TEMP_RESERVATIONS.put(reservation.getReservationId(), reservation);
+            // Temp.TEMP_RESERVATIONS.put(reservation.getReservationId(), reservation);
             //((ReservationsAdapter) list.getAdapter()).add(reservation);
             //list.setAdapter(list.getAdapter());
             //ImageView image = list.findViewById(R.id.resourcePlaceholder);
-           // image.setImageBitmap(ImageEncoding.convertToBitmap(Constants.APIs.GET_IMAGES));
+            // image.setImageBitmap(ImageEncoding.convertToBitmap(Constants.APIs.GET_IMAGES));
         });
         layout.setRefreshing(false);
     }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     public static void addReservation(Context context, LocalDate fromDate, LocalDate toDate, AppCompatActivity activity) {
 
@@ -245,7 +239,7 @@ ArrayList<ImageView> images = new ArrayList<>();
 
     }
 
-   public static void getAllReservationsByUserStoreInTempAndUpdateList(Context context, int owner_id, ListView list, SwipeRefreshLayout layout) {
+    public static void getAllReservationsByUserStoreInTempAndUpdateList(Context context, int owner_id, ListView list, SwipeRefreshLayout layout) {
 
         Relay relay = new Relay(Constants.APIs.GET_ALL_RESERVATIONS_BY_USER, response -> getAllReservationsByUserStoreInTempAndUpdateListRESPONSE(context, response, list, layout), (api, e) -> error(api, context, e, "Error fetching data from the server"));
 
@@ -282,7 +276,7 @@ ArrayList<ImageView> images = new ArrayList<>();
 
     private static void deleteGemRESPONSE(Context context, Response response, int owner_id, ListView list) {
 
-        ((ReservationsAdapter)list.getAdapter()).remove(Temp.TEMP_RESERVATIONS.containsKey(owner_id) ? Temp.TEMP_RESERVATIONS.get(owner_id): Temp.TEMP_RESERVATIONS.get(owner_id));
+        ((ReservationsAdapter) list.getAdapter()).remove(Temp.TEMP_RESERVATIONS.containsKey(owner_id) ? Temp.TEMP_RESERVATIONS.get(owner_id) : Temp.TEMP_RESERVATIONS.get(owner_id));
         Temp.TEMP_RESERVATIONS.remove(owner_id);
         list.invalidateViews();
 

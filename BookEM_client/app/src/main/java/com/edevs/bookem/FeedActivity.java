@@ -37,7 +37,7 @@ public class FeedActivity extends AppCompatActivity {
 
 
         // Prepares the adapted for the feed
-        ResourcesAdapter adapter = new ResourcesAdapter(FeedActivity.this, Helper.rebaseResourcesFromJSON());
+        ResourcesAdapter adapter = new ResourcesAdapter(FeedActivity.this, new ArrayList<>());
         Link.getAllImages(FeedActivity.this, pullToRefresh, feed);
 
         feed.setAdapter(adapter);

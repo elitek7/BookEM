@@ -56,7 +56,7 @@ public abstract class Helper {
 //                Resource current_resource = null;
 
 //                        String text = content.getString(Constants.Resources.DESCRIPTION);
-                    Resource current_resource = new Resource(i, resources[i], "");
+//                    Resource current_resource = new Resource(i, resources[i], "");
 
 
 //                        String img_src = content.getString(Constants.Resources.IMG_SRC);
