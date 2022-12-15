@@ -179,9 +179,9 @@ public class Link {
         layout.setRefreshing(false);
     }
 
-    public static void getAllReservations(Context context, SwipeRefreshLayout layout, ListView list) {
+    public static void getAllReservationsOnResource(Context context, SwipeRefreshLayout layout, ListView list) {
 
-        Relay relay = new Relay(Constants.APIs.GET_ALL_RESERVATIONS_ON_RESOURCE, response -> getAllImagesRESPONSE(context, response, layout, list), (api, e) -> error(api, context, e, "Error Fetching from Server"));
+        Relay relay = new Relay(Constants.APIs.GET_ALL_RESERVATIONS_ON_RESOURCE, response -> getAllReservationsOnResourceRESPONSE(context, response, layout, list), (api, e) -> error(api, context, e, "Error Fetching from Server"));
 
         relay.setConnectionMode(Relay.MODE.GET);
 
@@ -189,20 +189,21 @@ public class Link {
 
     }
 
-    private static void getAllReservationsRESPONSE(Context context, Response response, SwipeRefreshLayout layout, ListView list) {
+    private static void getAllReservationsOnResourceRESPONSE(Context context, Response response, SwipeRefreshLayout layout, ListView list) {
 
-        ArrayList<Resource> resources_result = (ArrayList<Resource>) response.getQueryResult().get(Constants.Response.Classes.RESOURCE);
+        ArrayList<Reservation> reservations_result = (ArrayList<Reservation>) response.getQueryResult().get(Constants.Response.Classes.RESERVATION);
 
-        assert resources_result != null;
-        Collections.reverse(resources_result);
+        assert reservations_result != null;
+        Collections.reverse(reservations_result);
 
-        ((ResourcesAdapter) list.getAdapter()).flush();
-        resources_result.forEach(resource -> {
-            Temp.TEMP_RESOURCES.put(resource.getResourceId(), resource);
-            ((ResourcesAdapter) list.getAdapter()).add(resource);
-            list.setAdapter(list.getAdapter());
-            ImageView image = list.findViewById(R.id.resourcePlaceholder);
-            image.setImageBitmap(ImageEncoding.convertToBitmap(Constants.APIs.GET_IMAGES));
+        //((ReservationsAdapter) list.getAdapter()).flush();
+        reservations_result.forEach(reservation -> {
+
+           // Temp.TEMP_RESERVATIONS.put(reservation.getReservationId(), reservation);
+            //((ReservationsAdapter) list.getAdapter()).add(reservation);
+            //list.setAdapter(list.getAdapter());
+            //ImageView image = list.findViewById(R.id.resourcePlaceholder);
+           // image.setImageBitmap(ImageEncoding.convertToBitmap(Constants.APIs.GET_IMAGES));
         });
         layout.setRefreshing(false);
     }
