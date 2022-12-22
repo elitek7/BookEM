@@ -14,7 +14,7 @@ Below are diagrams that describe the main functionalities of users and admins.
 
 The Design folder contains the Figma design and the Database model<br />
 Below is the Figma behind the app <br /><br />
-![Design](https://github.com/elitek7/BookEM/tree/main/BookEM_design/FIGMA))
+![Design](https://github.com/elitek7/BookEM/blob/main/BookEM_design/Full%20Design.png))
 
 # Stacks
 
